@@ -1,0 +1,100 @@
+Roy Smart
+Montana State University
+CSCI 305 Concepts of Programming Languages
+Lab 2: Rock, Paper, Scissors, Lizard, Spock Questions
+March 20, 2015
+
+
+Question 1: Describe your Player LastPlayBot. How did you implement this strategy?
+
+LastPlayBot was problematic, because the way the compareTo() method was designed,
+it did not easily give the other player access to the move just played. I got 
+around this problem by simply implementing two global variables, one for Player 1
+and another for Player 2. I also had to modify the constructor of the Players, so
+each bot could know what player they were (1 or 2). So to implement the strategy
+I just had the LastPlayBot read what the other bot had played last move from the
+global variables.
+
+
+Question 2: Describe your Player MyBot, explaining the strategy you employed and
+how you accomplished it.
+
+For my player, I pitted the system's cryptographically secure random number 
+generator (RNG) against Python's pseudo-random number generator. If I had finished
+I wanted to build a bot that could find a pattern in the PRNG (since its results 
+are reproducible) and then use a crypto RNG to make sure that strategy could not be
+used against MyBot. Unfortunately reverse engineering the Mersenne Twister
+algorithm employed in Python when presented with only the last 3 bits of each 
+random number turned out to be quite a challenge. To implement cryptographically 
+secure RNG, I used Python's SystemRandom class.
+
+
+Question 3: Using the course notes and any web resources of your choosing, explain
+the type system of Python, giving attention to the concepts of binding time, dynamic vs.
+static typing, strong vs. weak typing, and user-defined types (classes). Cite any sources
+you used other than class discussion or the textbook.
+
+i.	The binding time of python is at runtime, a variable or function is not available 
+	until it is declared.
+ii.	Python is a strongly typed language. Type mismatches raise an exception instead of
+	simply casting the variable to a new type.
+iii.Python also uses dynamic typing. A variable may be declared as one type and then
+	reused as another type.
+iv. Python allows the creation of user-defined types, including classes and enums.
+
+Question 4: Play a number of games, selecting your various players. Do you notice
+any trends? Are you, as the Human Player, able to beat any of the Bots on a consistent
+basis?
+
+The random bot consistently wins 50% of the time. The other bots are easy for the 
+human player to beat. The stupid bot, iterative bot, and last play bot can be easily
+predicted by a human player.
+
+
+Question 5: Read the wikipedia entry on Normal Form Games (http://en.
+wikipedia.org/wiki/Normal-form_game). Also, review the wikipedia page http:
+//en.wikipedia.org/wiki/Rock-paper-scissors-lizard-Spock. Is it possible to design
+a Player strategy that is more likely succeed? Why or why not? Explain in a
+paragraph. It is possible to answer this question even if you did not finish the Lab.
+
+It is certainly possible to design a player strategy that is more likely to win, there
+are many examples of this online. In the case of the human player, he/she is very bad at
+generating random numbers. The computer can capitalize on this and try to find patterns
+in the human's strategy to predict his/her next move. In the case of computer vs.
+computer, depending on how the RNG is implemented, it may be possible to find a pattern 
+or reverse engineer the other's RNG. In this case, it becomes an arms race to who can
+create more entropy with their random numbers.
+
+Question 6: Name something you like about Python. Explain.
+
+I like how it does not bother you with type checking. You can change variables and 
+functions around without having to worry about changing everything that calls/uses
+the function/variable.
+
+
+Question 7: Name something you dislike about Python. Explain.
+
+I don't really like the syntax. In the case of long functions or classes, without the
+aid of braces or brackets, it can be hard to tell immediately when the function ends.
+Additionally the object-oriented features of Python are pretty screwed up. For example
+calling any class-defined variable requires first using the variable self. Java's
+implementation is much better, likely because it was designed with object-oriented
+paradigms in mind.
+
+
+Question 8: Did you enjoy this lab? Which aspects did you like and/or dislike?
+
+I did enjoy this lab. It was fun to try and make an efficient program that could
+play many millions of games in a language that I had never used before. Also I
+really needed to learn Python, so I enjoyed taking the opportunity to learn 
+all of data structures available.
+
+
+Question 9: Approximately how many hours did you spend on this lab?
+
+Don't even ask. Probably more than 10.
+
+
+Question 10: Do you think you will use Python again? For which type(s) of project(s)?
+
+I would definetly use Python again, most likely for scientific computing type projects.
